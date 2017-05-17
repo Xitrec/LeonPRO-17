@@ -23,10 +23,10 @@
     Top = 3
     Width = 1021
     Height = 564
-    ActivePage = Заказы
+    ActivePage = tsЗаказы
     Align = alClient
     TabOrder = 0
-    object Заказы: TTabSheet
+    object tsЗаказы: TTabSheet
       Caption = #1047#1072#1082#1072#1079#1099
       object splitter: TSplitter
         Left = 0
@@ -124,9 +124,15 @@
         end
       end
     end
-    object Дополнительно: TTabSheet
-      Caption = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1086
+    object tsСтатистика: TTabSheet
+      Caption = #1057#1090#1072#1090#1080#1089#1090#1080#1082#1072
       ImageIndex = 1
+    end
+    object tsРасходы: TTabSheet
+      Caption = #1056#1072#1089#1093#1086#1076#1099
+      ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 25
     end
   end
   object StatusBar: TStatusBar

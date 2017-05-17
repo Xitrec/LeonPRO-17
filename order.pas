@@ -86,12 +86,18 @@ type
     intgrfldFDСоставСтоимость: TIntegerField;
     ds_Состав: TDataSource;
     FDQЗапросы: TFDQuery;
+    procedure edtКлиентEditButtons0Click(Sender: TObject; var Handled: Boolean);
   private
     { Private declarations }
     function GetZID: Integer;
+    procedure Добавить();
+    procedure Удалить();
+    procedure Изменить();
+    procedure Расчет();
   public
     { Public declarations }
     procedure Открыть();
+    procedure НовыйЗаказ();
   end;
 
 var
@@ -106,14 +112,38 @@ uses
 
 { TForm1 }
 
+procedure TfOrder.edtКлиентEditButtons0Click(Sender: TObject; var Handled: Boolean);
+begin
+  // Выбор нового клиента
+  FDQЗаказ.Edit;
+  FDQЗаказ.FieldByName('C-ID').AsInteger := FClients.ВыбратьКлиента(FDQЗаказ.FieldByName('C-ID').AsInteger);
+end;
+
 function TfOrder.GetZID: Integer;
 begin
   // Запрос на пулечение Z-ID из главного грида.
   Result := dmServer.FDQЗаказы.FieldByName('Z-ID').AsInteger;
 end;
 
+procedure TfOrder.Добавить;
+begin
+  Расчет;
+end;
+
+procedure TfOrder.Изменить;
+begin
+  Расчет;
+end;
+
+procedure TfOrder.НовыйЗаказ;
+begin
+//
+end;
+
 procedure TfOrder.Открыть;
 begin
+{$REGION 'Подготовка к открытию заказа.'}
+  //Ищем заказа и выходим если заказа нет.
   with FDQЗаказ do
   begin
     Close;
@@ -128,17 +158,57 @@ begin
     end;
   end;
 
+  // Проверяем не открыт ли он другим пользователем
+  if chkБлокировка.Checked then
+  begin
+    ShowMessage('Заказ открыт другим пользователем.');
+    dmServer.FDQЗаказы.Refresh;
+    exit;
+  end;
+
+ // Открываем состав и блокируем от совместной корретировки
+  chkБлокировка.Checked := true;
+  FDQЗаказ.post;
   FDQСостав.Close;
   FDQСостав.Open();
 
-  if ShowModal = mrOk then
+{$ENDREGION}
+  with dmServer.Connection do
   begin
+    StartTransaction;
 
-  end
-  else
-  begin
-
+    if ShowModal = mrOk then
+      Commit
+    else
+      Rollback;
   end;
+{$REGION 'Закрыте формы заказа'}
+  // Снимаем блок, пишем дату изменения, обновляем главную таблицу.
+  chkБлокировка.Checked := false;
+  edtUpdate.Text := dateTimeToStr(now);
+  FDQЗаказ.post;
+  FDQСостав.Close;
+  dmServer.FDQЗаказы.Refresh;
+  dmServer.FDQСостав.Refresh;
+{$ENDREGION}
+end;
+
+procedure TfOrder.Расчет;
+begin
+  with FDQЗапросы do
+  begin
+    SQL.Text := 'SELECT SUM(`Стоимость`) AS `Result` FROM Состав WHERE `Z-ID` LIKE :ZID';
+    ParamByName('ZID').AsInteger := edtZID.Value;
+    Open;
+    edtСтоимость.Value := FieldByName('Result').AsInteger;
+  end;
+
+  edtДоплата.Value := edtСтоимость.Value - edtАванс.Value;
+end;
+
+procedure TfOrder.Удалить;
+begin
+  Расчет;
 end;
 
 end.

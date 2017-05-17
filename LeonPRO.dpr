@@ -8,7 +8,8 @@ uses
   user in 'user.pas' {fUser},
   newUser in 'newUser.pas' {fNewUser},
   order in 'order.pas' {fOrder},
-  clients in 'clients.pas' {FClients};
+  clients in 'clients.pas' {FClients},
+  clientEdit in 'clientEdit.pas' {FClientEdit};
 
 {$R *.res}
 
@@ -22,5 +23,6 @@ begin
   Application.CreateForm(TfNewUser, fNewUser);
   Application.CreateForm(TfOrder, fOrder);
   Application.CreateForm(TFClients, FClients);
+  Application.CreateForm(TFClientEdit, FClientEdit);
   Application.Run;
 end.

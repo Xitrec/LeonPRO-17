@@ -15,8 +15,8 @@ type
     N2: TMenuItem;
     MainPageControl: TPageControl;
     StatusBar: TStatusBar;
-    Заказы: TTabSheet;
-    Дополнительно: TTabSheet;
+    tsЗаказы: TTabSheet;
+    tsСтатистика: TTabSheet;
     splitter: TSplitter;
     pnlClient: TPanel;
     pnlButtom: TPanel;
@@ -25,6 +25,7 @@ type
     DBGridEh2: TDBGridEh;
     N4: TMenuItem;
     N5: TMenuItem;
+    tsРасходы: TTabSheet;
     procedure N1Click(Sender: TObject);
     procedure TabSetClick(Sender: TObject);
     procedure N4Click(Sender: TObject);

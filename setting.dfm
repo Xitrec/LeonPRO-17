@@ -282,12 +282,53 @@
       end
     end
     object Дополнительно: TTabSheet
-      Caption = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1086
+      Caption = #1055#1091#1090#1100' '#1082' '#1087#1072#1087#1082#1072#1084' '#1080' '#1092#1072#1081#1083#1072#1084
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 524
-      ExplicitHeight = 0
+      object lbl2: TLabel
+        AlignWithMargins = True
+        Left = 10
+        Top = 10
+        Width = 373
+        Height = 21
+        Margins.Left = 10
+        Margins.Top = 10
+        Margins.Right = 10
+        Margins.Bottom = 10
+        Align = alTop
+        Caption = #1054#1089#1085#1086#1074#1085#1099#1077' '#1087#1091#1090#1080' '#1082' '#1087#1072#1087#1082#1072#1084' '#1080' '#1092#1072#1081#1083#1072#1084' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        ExplicitWidth = 338
+      end
+      object edtПапкаКлиентов: TDBEditEh
+        AlignWithMargins = True
+        Left = 130
+        Top = 51
+        Width = 253
+        Height = 21
+        Margins.Left = 130
+        Margins.Top = 10
+        Margins.Right = 10
+        ControlLabel.Width = 104
+        ControlLabel.Height = 13
+        ControlLabel.Caption = #1050#1072#1090#1072#1083#1086#1075#1080' '#1082#1083#1080#1077#1085#1090#1086#1074':'
+        ControlLabel.Visible = True
+        ControlLabelLocation.Spacing = 5
+        ControlLabelLocation.Offset = -1
+        ControlLabelLocation.Position = lpLeftCenterEh
+        Align = alTop
+        DynProps = <>
+        EditButtons = <
+          item
+            OnClick = edtПапкаКлиентовEditButtons0Click
+          end>
+        TabOrder = 0
+        Visible = True
+      end
     end
   end
 end

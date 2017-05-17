@@ -26,37 +26,44 @@ type
     lblСостояниеСервера: TLabel;
     chkАвтоПодключениеБД: TCheckBox;
     edtPingInterval: TDBNumberEditEh;
+    edtПапкаКлиентов: TDBEditEh;
+    lbl2: TLabel;
     procedure btnПодключитьБДClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtПапкаКлиентовEditButtons0Click(Sender: TObject;
+      var Handled: Boolean);
   private
     FUserName: string;
     FPort: string;
     FDatabase: string;
     FPassword: string;
     FServer: string;
-    FИдикацияПодключения: Boolean;
+    FИндикацияПодключения: Boolean;
     FАвтоПодключение: Boolean;
     FSelectAID: Integer;
     FPingTime: Integer;
+    FКаталогКлиентов: string;
     procedure SetDatabase(const Value: string);
     procedure SetPassword(const Value: string);
     procedure SetPort(const Value: string);
     procedure SetServer(const Value: string);
     procedure SetUser_Name(const Value: string);
-    procedure SetИдикацияПодключения(const Value: Boolean);
+    procedure SetИндикацияПодключения(const Value: Boolean);
     procedure SetАвтоПодключение(const Value: Boolean);
     procedure SetSelectAID(const Value: Integer);
     procedure SetPingTime(const Value: Integer);
+    procedure SetКаталогКлиентов(const Value: string);
     { Private declarations }
   public
     { Public declarations }
+    property КаталогКлиентов: string read FКаталогКлиентов write SetКаталогКлиентов;
     property Database: string read FDatabase write SetDatabase;
     property UserName: string read FUserName write SetUser_Name;
     property Password: string read FPassword write SetPassword;
     property Server: string read FServer write SetServer;
     property Port: string read FPort write SetPort;
-    property ИндикацияПодключения: Boolean read FИдикацияПодключения write SetИдикацияПодключения;
+    property ИндикацияПодключения: Boolean read FИндикацияПодключения write SetИндикацияПодключения;
     property АвтоПодключение: Boolean read FАвтоПодключение write SetАвтоПодключение;
     property SelectAID: Integer read FSelectAID write SetSelectAID;
     property PingTime: Integer read FPingTime write SetPingTime;
@@ -71,7 +78,7 @@ var
 implementation
 
 uses
-  server, IniFiles, main;
+  server, IniFiles, main, FileCtrl;
 
 {$R *.dfm}
 
@@ -80,6 +87,15 @@ uses
 procedure TfSetting.btnПодключитьБДClick(Sender: TObject);
 begin
   dmServer.Подключить;
+end;
+
+procedure TfSetting.edtПапкаКлиентовEditButtons0Click(
+  Sender: TObject; var Handled: Boolean);
+var
+ chosenDirectory: string;
+begin
+if SelectDirectory('Выберите каталог', '', chosenDirectory)  then
+  КаталогКлиентов :=  chosenDirectory;
 end;
 
 procedure TfSetting.FormCreate(Sender: TObject);
@@ -173,16 +189,25 @@ begin
   end;
 end;
 
-procedure TfSetting.SetИдикацияПодключения(const Value: Boolean);
+procedure TfSetting.SetИндикацияПодключения(const Value: Boolean);
 begin
-  if FИдикацияПодключения <> Value then
+  if FИндикацияПодключения <> Value then
   begin
-    FИдикацияПодключения := Value;
+    FИндикацияПодключения := Value;
 
     if Value then
       lblСостояниеСервера.Caption := 'Состояние сервера: Подключенно.'
     else
       lblСостояниеСервера.Caption := 'Состояние сервера: Отключен.';
+  end;
+end;
+
+procedure TfSetting.SetКаталогКлиентов(const Value: string);
+begin
+  if FКаталогКлиентов <> Value then
+  begin
+    FКаталогКлиентов := Value;
+    edtПапкаКлиентов.Text := Value;
   end;
 end;
 
@@ -202,6 +227,8 @@ begin
 
   SelectAID := Ini.ReadInteger('Interface', 'SelectAID', 1);
 
+  КаталогКлиентов := Ini.ReadString('Path', 'КаталогКлиентов', '');
+
   Ini.Free;
 
 end;
@@ -217,6 +244,7 @@ begin
     UserName := edtUser.Text;
     PingTime := edtPingInterval.Value;
     АвтоПодключение := chkАвтоПодключениеБД.Checked;
+    КаталогКлиентов := edtПапкаКлиентов.Text;
 
     СохранитьНастройки;
   end
@@ -241,6 +269,8 @@ begin
   Ini.WriteBool('Connection', 'АвтоПодключение', АвтоПодключение);
 
   Ini.WriteInteger('Interface', 'SelectAID', SelectAID);
+
+  Ini.WriteString('Path', 'КаталогКлиентов', КаталогКлиентов);
 
   Ini.Free;
 end;

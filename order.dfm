@@ -69,7 +69,7 @@
       Width = 97
       Height = 25
       Align = alLeft
-      Caption = 'chk'#1041#1083#1086#1082#1080#1088#1086#1074#1082#1072
+      Caption = #1041#1083#1086#1082#1080#1088#1086#1074#1082#1072
       DataField = #1041#1083#1086#1082#1080#1088#1086#1074#1082#1072
       DataSource = ds_Заказ
       DynProps = <>
@@ -330,10 +330,7 @@
             DataField = #1053#1072#1079#1074#1072#1085#1080#1077
             DataSource = ds_Заказ
             DynProps = <>
-            EditButtons = <
-              item
-                Style = ebsEllipsisEh
-              end>
+            EditButtons = <>
             ParentShowHint = False
             TabOrder = 0
             Visible = True
@@ -362,6 +359,7 @@
             EditButtons = <
               item
                 Style = ebsEllipsisEh
+                OnClick = edtКлиентEditButtons0Click
               end>
             ParentShowHint = False
             ReadOnly = True
@@ -877,6 +875,7 @@
     end
     object wdstrngfldFDСоставПараметры: TWideStringField
       AutoGenerateValue = arDefault
+      DisplayWidth = 70
       FieldName = #1055#1072#1088#1072#1084#1077#1090#1088#1099
       Origin = '`'#1055#1072#1088#1072#1084#1077#1090#1088#1099'`'
       FixedChar = True
@@ -887,21 +886,25 @@
       Origin = '`S-ID`'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
+      Visible = False
     end
     object intgrfldFDСоставZID: TIntegerField
       FieldName = 'Z-ID'
       Origin = '`Z-ID`'
       Required = True
+      Visible = False
     end
     object intgrfldFDСоставWID: TIntegerField
       FieldName = 'W-ID'
       Origin = '`W-ID`'
       Required = True
+      Visible = False
     end
     object intgrfldFDСоставVID: TIntegerField
       FieldName = 'V-ID'
       Origin = '`V-ID`'
       Required = True
+      Visible = False
     end
     object wdstrngfldFDСоставОписание: TWideStringField
       AutoGenerateValue = arDefault
@@ -911,14 +914,17 @@
       Size = 25
     end
     object intgrfldFDСоставКоличество: TIntegerField
+      Alignment = taCenter
       FieldName = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086
       Origin = '`'#1050#1086#1083#1080#1095#1077#1089#1090#1074#1086'`'
       Required = True
+      DisplayFormat = '# "'#1096#1090'."'
     end
     object intgrfldFDСоставСтоимость: TIntegerField
       FieldName = #1057#1090#1086#1080#1084#1086#1089#1090#1100
       Origin = '`'#1057#1090#1086#1080#1084#1086#1089#1090#1100'`'
       Required = True
+      DisplayFormat = '#,##0 "'#8381'"'
     end
   end
   object ds_Состав: TDataSource

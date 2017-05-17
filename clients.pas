@@ -63,7 +63,7 @@ var
 implementation
 
 uses
-  server;
+  server, clientEdit;
 
 {$R *.dfm}
 
@@ -145,17 +145,17 @@ end;
 
 procedure TFClients.—оздатьЌового лиента(Sender: TObject);
 begin
-  //FClientEdit.Ќовый лиент();
+  FClientEdit.Ќовый лиент();
 end;
 
 procedure TFClients.–едактировать лиента(Sender: TObject);
 begin
-  //FClientEdit.»зменить();
+  FClientEdit.»зменить();
 end;
 
 procedure TFClients.”далить лиента(Sender: TObject);
 begin
- // FClientEdit.”далить();
+  FClientEdit.”далить();
 end;
 
 end.
