@@ -2,8 +2,8 @@
   Left = 0
   Top = 0
   Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
-  ClientHeight = 504
-  ClientWidth = 411
+  ClientHeight = 597
+  ClientWidth = 416
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,8 +18,8 @@
   TextHeight = 13
   object pnlButtom: TPanel
     Left = 0
-    Top = 463
-    Width = 411
+    Top = 556
+    Width = 416
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
@@ -28,7 +28,7 @@
     TabOrder = 0
     object btnOk: TButton
       AlignWithMargins = True
-      Left = 245
+      Left = 250
       Top = 8
       Width = 75
       Height = 25
@@ -43,7 +43,7 @@
     end
     object btnCancel: TButton
       AlignWithMargins = True
-      Left = 328
+      Left = 333
       Top = 8
       Width = 75
       Height = 25
@@ -61,8 +61,8 @@
     AlignWithMargins = True
     Left = 5
     Top = 5
-    Width = 401
-    Height = 458
+    Width = 406
+    Height = 551
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
@@ -76,7 +76,7 @@
         AlignWithMargins = True
         Left = 10
         Top = 10
-        Width = 373
+        Width = 378
         Height = 21
         Margins.Left = 10
         Margins.Top = 10
@@ -96,7 +96,7 @@
         AlignWithMargins = True
         Left = 130
         Top = 51
-        Width = 253
+        Width = 258
         Height = 21
         Margins.Left = 130
         Margins.Top = 10
@@ -118,7 +118,7 @@
         AlignWithMargins = True
         Left = 130
         Top = 78
-        Width = 253
+        Width = 258
         Height = 21
         Margins.Left = 130
         Margins.Right = 10
@@ -139,7 +139,7 @@
         AlignWithMargins = True
         Left = 130
         Top = 139
-        Width = 253
+        Width = 258
         Height = 21
         Margins.Left = 130
         Margins.Right = 10
@@ -160,7 +160,7 @@
         AlignWithMargins = True
         Left = 130
         Top = 166
-        Width = 253
+        Width = 258
         Height = 21
         Margins.Left = 130
         Margins.Right = 10
@@ -182,7 +182,7 @@
         AlignWithMargins = True
         Left = 130
         Top = 105
-        Width = 253
+        Width = 258
         Height = 21
         Margins.Left = 130
         Margins.Right = 10
@@ -203,7 +203,7 @@
       object панельСервер: TPanel
         Left = 0
         Top = 254
-        Width = 393
+        Width = 398
         Height = 41
         Align = alTop
         BevelOuter = bvNone
@@ -231,7 +231,7 @@
         end
         object btnПодключитьБД: TButton
           AlignWithMargins = True
-          Left = 230
+          Left = 235
           Top = 8
           Width = 153
           Height = 25
@@ -248,7 +248,7 @@
         AlignWithMargins = True
         Left = 130
         Top = 234
-        Width = 260
+        Width = 265
         Height = 17
         Margins.Left = 130
         Margins.Top = 10
@@ -260,7 +260,7 @@
         AlignWithMargins = True
         Left = 130
         Top = 200
-        Width = 253
+        Width = 258
         Height = 21
         Margins.Left = 130
         Margins.Top = 10
@@ -288,7 +288,7 @@
         AlignWithMargins = True
         Left = 10
         Top = 10
-        Width = 373
+        Width = 378
         Height = 21
         Margins.Left = 10
         Margins.Top = 10
@@ -308,7 +308,7 @@
         AlignWithMargins = True
         Left = 130
         Top = 51
-        Width = 253
+        Width = 258
         Height = 21
         Margins.Left = 130
         Margins.Top = 10
@@ -328,6 +328,250 @@
           end>
         TabOrder = 0
         Visible = True
+      end
+    end
+    object Сообщения: TTabSheet
+      Caption = #1057#1086#1086#1073#1097#1077#1085#1080#1103
+      ImageIndex = 2
+      object lbl3: TLabel
+        AlignWithMargins = True
+        Left = 10
+        Top = 10
+        Width = 378
+        Height = 21
+        Margins.Left = 10
+        Margins.Top = 10
+        Margins.Right = 10
+        Margins.Bottom = 10
+        Align = alTop
+        Caption = #1059#1082#1072#1078#1080#1090#1077' '#1090#1077#1084#1099' '#1080' '#1089#1086#1076#1077#1088#1078#1072#1085#1080#1077' '#1087#1080#1089#1077#1084' '#1087#1086' '#1091#1084#1086#1083#1095#1072#1085#1080#1102
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        ExplicitWidth = 365
+      end
+      object grp1: TGroupBox
+        AlignWithMargins = True
+        Left = 3
+        Top = 351
+        Width = 392
+        Height = 134
+        Align = alTop
+        Caption = #1043#1086#1090#1086#1074
+        TabOrder = 0
+        object edtТемаГотов: TDBEditEh
+          AlignWithMargins = True
+          Left = 52
+          Top = 25
+          Width = 328
+          Height = 21
+          Margins.Left = 50
+          Margins.Top = 10
+          Margins.Right = 10
+          Margins.Bottom = 5
+          ControlLabel.Width = 28
+          ControlLabel.Height = 13
+          ControlLabel.Caption = #1058#1077#1084#1072':'
+          ControlLabel.Visible = True
+          ControlLabelLocation.Spacing = 5
+          ControlLabelLocation.Offset = -1
+          ControlLabelLocation.Position = lpLeftCenterEh
+          Align = alTop
+          DynProps = <>
+          EditButtons = <>
+          TabOrder = 0
+          Visible = True
+        end
+        object memoГотов: TDBMemoEh
+          AlignWithMargins = True
+          Left = 12
+          Top = 56
+          Width = 368
+          Height = 66
+          Margins.Left = 10
+          Margins.Top = 5
+          Margins.Right = 10
+          Margins.Bottom = 10
+          Lines.Strings = (
+            'dbmh1')
+          Align = alClient
+          AutoSize = False
+          DynProps = <>
+          EditButtons = <>
+          TabOrder = 1
+          Visible = True
+          WantReturns = True
+        end
+      end
+      object grp2: TGroupBox
+        AlignWithMargins = True
+        Left = 3
+        Top = 184
+        Width = 392
+        Height = 161
+        Align = alTop
+        Caption = #1052#1072#1082#1077#1090
+        TabOrder = 1
+        object edtТемаМакет: TDBEditEh
+          AlignWithMargins = True
+          Left = 52
+          Top = 25
+          Width = 328
+          Height = 21
+          Margins.Left = 50
+          Margins.Top = 10
+          Margins.Right = 10
+          Margins.Bottom = 5
+          ControlLabel.Width = 28
+          ControlLabel.Height = 13
+          ControlLabel.Caption = #1058#1077#1084#1072':'
+          ControlLabel.Visible = True
+          ControlLabelLocation.Spacing = 5
+          ControlLabelLocation.Offset = -1
+          ControlLabelLocation.Position = lpLeftCenterEh
+          Align = alTop
+          DynProps = <>
+          EditButtons = <>
+          TabOrder = 0
+          Visible = True
+        end
+        object memoМакет: TDBMemoEh
+          AlignWithMargins = True
+          Left = 12
+          Top = 56
+          Width = 368
+          Height = 63
+          Margins.Left = 10
+          Margins.Top = 5
+          Margins.Right = 10
+          Margins.Bottom = 10
+          Lines.Strings = (
+            'dbmh1')
+          Align = alClient
+          AutoSize = False
+          DynProps = <>
+          EditButtons = <>
+          TabOrder = 1
+          Visible = True
+          WantReturns = True
+        end
+        object chkОткрыватьПапкуКлиента: TCheckBox
+          AlignWithMargins = True
+          Left = 12
+          Top = 132
+          Width = 368
+          Height = 17
+          Margins.Left = 10
+          Margins.Right = 10
+          Margins.Bottom = 10
+          Align = alBottom
+          Caption = #1054#1090#1082#1088#1099#1074#1072#1090#1100' '#1087#1072#1087#1082#1091' '#1082#1083#1080#1077#1085#1090#1072
+          TabOrder = 2
+        end
+      end
+      object grp3: TGroupBox
+        AlignWithMargins = True
+        Left = 3
+        Top = 44
+        Width = 392
+        Height = 134
+        Align = alTop
+        Caption = #1054#1092#1086#1088#1084#1083#1077#1085#1080#1077
+        TabOrder = 2
+        object edtТемаОформление: TDBEditEh
+          AlignWithMargins = True
+          Left = 52
+          Top = 25
+          Width = 328
+          Height = 21
+          Margins.Left = 50
+          Margins.Top = 10
+          Margins.Right = 10
+          Margins.Bottom = 5
+          ControlLabel.Width = 28
+          ControlLabel.Height = 13
+          ControlLabel.Caption = #1058#1077#1084#1072':'
+          ControlLabel.Visible = True
+          ControlLabelLocation.Spacing = 5
+          ControlLabelLocation.Offset = -1
+          ControlLabelLocation.Position = lpLeftCenterEh
+          Align = alTop
+          DynProps = <>
+          EditButtons = <>
+          TabOrder = 0
+          Visible = True
+        end
+        object memoОформление: TDBMemoEh
+          AlignWithMargins = True
+          Left = 12
+          Top = 56
+          Width = 368
+          Height = 66
+          Margins.Left = 10
+          Margins.Top = 5
+          Margins.Right = 10
+          Margins.Bottom = 10
+          Lines.Strings = (
+            'dbmh1')
+          Align = alClient
+          AutoSize = False
+          DynProps = <>
+          EditButtons = <>
+          TabOrder = 1
+          Visible = True
+          WantReturns = True
+        end
+      end
+    end
+    object Бланк: TTabSheet
+      Caption = #1041#1083#1072#1085#1082' '#1079#1072#1082#1072#1079#1072
+      ImageIndex = 3
+      object lbl4: TLabel
+        AlignWithMargins = True
+        Left = 10
+        Top = 10
+        Width = 378
+        Height = 21
+        Margins.Left = 10
+        Margins.Top = 10
+        Margins.Right = 10
+        Margins.Bottom = 10
+        Align = alTop
+        Caption = #1058#1077#1082#1089#1090' '#1073#1083#1072#1085#1082#1072' '#1085#1072#1088#1103#1076' '#1079#1072#1082#1072#1079#1072' '#1087#1088#1080' '#1087#1077#1095#1072#1090#1080
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        ExplicitWidth = 274
+      end
+      object memoБланкЗаказа: TDBMemoEh
+        AlignWithMargins = True
+        Left = 10
+        Top = 46
+        Width = 378
+        Height = 467
+        Margins.Left = 10
+        Margins.Top = 5
+        Margins.Right = 10
+        Margins.Bottom = 10
+        Lines.Strings = (
+          'dbmh1')
+        Align = alClient
+        AutoSize = False
+        DynProps = <>
+        EditButtons = <>
+        TabOrder = 0
+        Visible = True
+        WantReturns = True
+        ExplicitLeft = 12
+        ExplicitTop = 56
+        ExplicitWidth = 368
+        ExplicitHeight = 66
       end
     end
   end

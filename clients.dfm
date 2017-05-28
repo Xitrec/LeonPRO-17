@@ -67,6 +67,30 @@
       TabOrder = 1
       OnClick = ВыбратьКлиентаИзТаблицы
     end
+    object edtCID: TDBEditEh
+      AlignWithMargins = True
+      Left = 42
+      Top = 12
+      Width = 41
+      Height = 21
+      Margins.Left = 35
+      Margins.Top = 5
+      Margins.Bottom = 5
+      ControlLabel.Width = 18
+      ControlLabel.Height = 13
+      ControlLabel.Caption = 'CID'
+      ControlLabel.Visible = True
+      ControlLabelLocation.Spacing = 8
+      ControlLabelLocation.Offset = -1
+      ControlLabelLocation.Position = lpLeftCenterEh
+      Align = alLeft
+      DataField = 'C-ID'
+      DataSource = FOrder.DS_Заказ
+      DynProps = <>
+      EditButtons = <>
+      TabOrder = 2
+      Visible = True
+    end
   end
   object DBGridEh2: TDBGridEh
     AlignWithMargins = True

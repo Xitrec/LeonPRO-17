@@ -1,0 +1,660 @@
+﻿object fAvans: TfAvans
+  Left = 0
+  Top = 0
+  Caption = #1042#1085#1077#1089#1090#1080' '#1072#1074#1072#1085#1089#1086#1074#1099#1081' '#1087#1083#1072#1090#1077#1078
+  ClientHeight = 471
+  ClientWidth = 784
+  Color = clBtnFace
+  Constraints.MinHeight = 510
+  Constraints.MinWidth = 800
+  Font.Charset = RUSSIAN_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  OnCloseQuery = FormCloseQuery
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlБоковая_Панель: TPanel
+    AlignWithMargins = True
+    Left = 494
+    Top = 10
+    Width = 280
+    Height = 406
+    Margins.Left = 0
+    Margins.Top = 10
+    Margins.Right = 10
+    Margins.Bottom = 10
+    Align = alRight
+    BevelKind = bkFlat
+    BevelOuter = bvNone
+    Caption = 'pnl'#1041#1086#1082#1086#1074#1072#1103'_'#1055#1072#1085#1077#1083#1100
+    Color = 15921906
+    ParentBackground = False
+    ShowCaption = False
+    TabOrder = 0
+    object lbl1: TLabel
+      AlignWithMargins = True
+      Left = 3
+      Top = 10
+      Width = 270
+      Height = 21
+      Margins.Top = 10
+      Align = alTop
+      Alignment = taCenter
+      Caption = #1048#1085#1092#1086#1088#1084#1072#1094#1080#1103' '#1086' '#1079#1072#1082#1072#1079#1077
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      ExplicitWidth = 159
+    end
+    object edtСтоимость: TDBNumberEditEh
+      AlignWithMargins = True
+      Left = 130
+      Top = 105
+      Width = 126
+      Height = 21
+      Margins.Left = 130
+      Margins.Top = 10
+      Margins.Right = 20
+      ControlLabel.Width = 97
+      ControlLabel.Height = 13
+      ControlLabel.Caption = #1057#1090#1086#1080#1084#1086#1089#1090#1100' '#1079#1072#1082#1072#1079#1072':'
+      ControlLabel.Visible = True
+      ControlLabelLocation.Spacing = 8
+      ControlLabelLocation.Offset = -1
+      ControlLabelLocation.Position = lpLeftCenterEh
+      Align = alTop
+      currency = False
+      DataField = #1057#1090#1086#1080#1084#1086#1089#1090#1100
+      DataSource = fOrder.ds_Заказ
+      DynProps = <>
+      EditButtons = <>
+      ReadOnly = True
+      TabOrder = 1
+      Visible = True
+    end
+    object edtАванс: TDBNumberEditEh
+      AlignWithMargins = True
+      Left = 130
+      Top = 132
+      Width = 126
+      Height = 21
+      Margins.Left = 130
+      Margins.Right = 20
+      ControlLabel.Width = 96
+      ControlLabel.Height = 13
+      ControlLabel.Caption = #1042#1085#1077#1089#1077#1085#1085#1099#1081' '#1072#1074#1072#1085#1089':'
+      ControlLabel.Visible = True
+      ControlLabelLocation.Spacing = 8
+      ControlLabelLocation.Offset = -1
+      ControlLabelLocation.Position = lpLeftCenterEh
+      Align = alTop
+      currency = False
+      DataField = #1040#1074#1072#1085#1089
+      DataSource = fOrder.ds_Заказ
+      DynProps = <>
+      EditButtons = <>
+      ReadOnly = True
+      TabOrder = 2
+      Visible = True
+    end
+    object edtДоплата: TDBNumberEditEh
+      AlignWithMargins = True
+      Left = 130
+      Top = 159
+      Width = 126
+      Height = 21
+      Margins.Left = 130
+      Margins.Right = 20
+      ControlLabel.Width = 48
+      ControlLabel.Height = 13
+      ControlLabel.Caption = #1044#1086#1087#1083#1072#1090#1072':'
+      ControlLabel.Visible = True
+      ControlLabelLocation.Spacing = 8
+      ControlLabelLocation.Offset = -1
+      ControlLabelLocation.Position = lpLeftCenterEh
+      Align = alTop
+      currency = False
+      DataField = #1044#1086#1087#1083#1072#1090#1072
+      DataSource = fOrder.ds_Заказ
+      DynProps = <>
+      EditButtons = <>
+      ReadOnly = True
+      TabOrder = 3
+      Visible = True
+    end
+    object btnРежим: TButton
+      AlignWithMargins = True
+      Left = 20
+      Top = 193
+      Width = 236
+      Height = 25
+      Margins.Left = 20
+      Margins.Top = 10
+      Margins.Right = 20
+      Align = alTop
+      Caption = #1055#1083#1072#1090#1105#1078
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnClick = НоваяТранзакция
+    end
+    object edtZID: TDBNumberEditEh
+      AlignWithMargins = True
+      Left = 130
+      Top = 44
+      Width = 126
+      Height = 21
+      Margins.Left = 130
+      Margins.Top = 10
+      Margins.Right = 20
+      ControlLabel.Width = 20
+      ControlLabel.Height = 13
+      ControlLabel.Caption = 'ZID:'
+      ControlLabel.Visible = True
+      ControlLabelLocation.Spacing = 8
+      ControlLabelLocation.Offset = -1
+      ControlLabelLocation.Position = lpLeftCenterEh
+      Align = alTop
+      currency = False
+      DataField = 'Z-ID'
+      DataSource = fOrder.ds_Заказ
+      DynProps = <>
+      EditButtons = <>
+      ReadOnly = True
+      TabOrder = 4
+      Visible = False
+    end
+    object pnlФинансы: TPanel
+      Left = 0
+      Top = 221
+      Width = 276
+      Height = 175
+      Align = alTop
+      BevelOuter = bvNone
+      Caption = 'pnl3'
+      ShowCaption = False
+      TabOrder = 5
+      Visible = False
+      object pnl2: TPanel
+        AlignWithMargins = True
+        Left = 0
+        Top = 132
+        Width = 276
+        Height = 31
+        Margins.Left = 0
+        Margins.Top = 10
+        Margins.Right = 0
+        Align = alTop
+        BevelOuter = bvNone
+        Caption = 'pnl2'
+        ShowCaption = False
+        TabOrder = 0
+        object btnДобавить: TButton
+          AlignWithMargins = True
+          Left = 100
+          Top = 3
+          Width = 75
+          Height = 25
+          Align = alRight
+          Caption = #1044#1086#1073#1072#1074#1080#1090#1100
+          TabOrder = 0
+          OnClick = btnДобавитьClick
+        end
+        object btnBtnОтмена: TButton
+          AlignWithMargins = True
+          Left = 181
+          Top = 3
+          Width = 75
+          Height = 25
+          Margins.Right = 20
+          Align = alRight
+          Caption = #1054#1090#1084#1077#1085#1072
+          TabOrder = 1
+          OnClick = btnBtnОтменаClick
+        end
+      end
+      object edtРасчетнаяДоплата: TDBNumberEditEh
+        AlignWithMargins = True
+        Left = 130
+        Top = 98
+        Width = 126
+        Height = 21
+        Margins.Left = 130
+        Margins.Right = 20
+        ControlLabel.Width = 103
+        ControlLabel.Height = 13
+        ControlLabel.Caption = #1056#1072#1089#1095#1077#1090#1085#1072#1103' '#1076#1086#1087#1083#1072#1090#1072':'
+        ControlLabel.Visible = True
+        ControlLabelLocation.Spacing = 8
+        ControlLabelLocation.Offset = -1
+        ControlLabelLocation.Position = lpLeftCenterEh
+        Align = alTop
+        currency = False
+        DisplayFormat = '#,##0 "'#8381'"'
+        DynProps = <>
+        EditButtons = <>
+        TabOrder = 1
+        Value = 0.000000000000000000
+        Visible = True
+      end
+      object edtСумма: TDBNumberEditEh
+        AlignWithMargins = True
+        Left = 130
+        Top = 71
+        Width = 126
+        Height = 21
+        Margins.Left = 130
+        Margins.Top = 10
+        Margins.Right = 20
+        ControlLabel.Width = 37
+        ControlLabel.Height = 13
+        ControlLabel.Caption = #1057#1091#1084#1084#1072':'
+        ControlLabel.Visible = True
+        ControlLabelLocation.Spacing = 8
+        ControlLabelLocation.Offset = -1
+        ControlLabelLocation.Position = lpLeftCenterEh
+        Align = alTop
+        Color = 16121844
+        currency = True
+        DataField = #1057#1091#1084#1084#1072
+        DataSource = dsФинансы
+        DynProps = <>
+        EditButtons = <>
+        TabOrder = 2
+        Visible = True
+        OnChange = edtСуммаChange
+        OnDblClick = edtСуммаDblClick
+      end
+      object edtНомерСчета: TDBNumberEditEh
+        AlignWithMargins = True
+        Left = 130
+        Top = 37
+        Width = 126
+        Height = 21
+        Margins.Left = 130
+        Margins.Right = 20
+        ControlLabel.Width = 110
+        ControlLabel.Height = 13
+        ControlLabel.Caption = #1053#1086#1084#1077#1088' '#1089#1095#1077#1090#1072' / '#1082#1072#1088#1090#1099
+        ControlLabel.Visible = True
+        ControlLabelLocation.Spacing = 8
+        ControlLabelLocation.Offset = -1
+        ControlLabelLocation.Position = lpLeftCenterEh
+        Align = alTop
+        currency = False
+        DataField = #1053#1086#1084#1077#1088'_'#1089#1095#1105#1090#1072
+        DataSource = dsФинансы
+        DynProps = <>
+        EditButtons = <>
+        TabOrder = 3
+        Visible = True
+      end
+      object cbbСпособОплаты: TDBLookupComboboxEh
+        AlignWithMargins = True
+        Left = 130
+        Top = 10
+        Width = 126
+        Height = 21
+        Margins.Left = 130
+        Margins.Top = 10
+        Margins.Right = 20
+        ControlLabel.Width = 85
+        ControlLabel.Height = 13
+        ControlLabel.Caption = #1057#1087#1086#1089#1086#1073' '#1086#1087#1083#1072#1090#1099':'
+        ControlLabel.Visible = True
+        ControlLabelLocation.Spacing = 8
+        ControlLabelLocation.Offset = -1
+        ControlLabelLocation.Position = lpLeftCenterEh
+        Align = alTop
+        DynProps = <>
+        DataField = #1057#1087#1086#1089#1086#1073'_'#1086#1087#1083#1072#1090#1099
+        DataSource = dsФинансы
+        EditButtons = <>
+        KeyField = 'ID'
+        ListField = #1053#1072#1079#1074#1072#1085#1080#1077
+        ListSource = dmServer.dsСпособ_Оплаты
+        TabOrder = 4
+        Visible = True
+      end
+    end
+    object edtCID: TDBNumberEditEh
+      AlignWithMargins = True
+      Left = 130
+      Top = 71
+      Width = 126
+      Height = 21
+      Margins.Left = 130
+      Margins.Right = 20
+      ControlLabel.Width = 21
+      ControlLabel.Height = 13
+      ControlLabel.Caption = 'CID:'
+      ControlLabel.Visible = True
+      ControlLabelLocation.Spacing = 8
+      ControlLabelLocation.Offset = -1
+      ControlLabelLocation.Position = lpLeftCenterEh
+      Align = alTop
+      currency = False
+      DataField = 'C-ID'
+      DataSource = fOrder.ds_Заказ
+      DynProps = <>
+      EditButtons = <>
+      ReadOnly = True
+      TabOrder = 6
+      Visible = False
+    end
+  end
+  object pnl1: TPanel
+    Left = 0
+    Top = 0
+    Width = 494
+    Height = 426
+    Align = alClient
+    BevelOuter = bvNone
+    Caption = 'pnl1'
+    ShowCaption = False
+    TabOrder = 1
+    object DBGridEh1: TDBGridEh
+      AlignWithMargins = True
+      Left = 10
+      Top = 148
+      Width = 474
+      Height = 268
+      Margins.Left = 10
+      Margins.Top = 10
+      Margins.Right = 10
+      Margins.Bottom = 10
+      Align = alClient
+      AutoFitColWidths = True
+      Color = 16448250
+      DataSource = dsФинансы
+      DynProps = <>
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = -13421773
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 0
+      object RowDetailData: TRowDetailPanelControlEh
+      end
+    end
+    object pnlВерхняя_Панель: TPanel
+      Left = 0
+      Top = 0
+      Width = 494
+      Height = 138
+      Align = alTop
+      BevelOuter = bvNone
+      Caption = 'Panel4'
+      DoubleBuffered = True
+      ParentBackground = False
+      ParentColor = True
+      ParentDoubleBuffered = False
+      ShowCaption = False
+      TabOrder = 1
+      object lblL_НарядЗаказ: TLabel
+        AlignWithMargins = True
+        Left = 15
+        Top = 23
+        Width = 476
+        Height = 30
+        Margins.Left = 15
+        Margins.Top = 23
+        Align = alTop
+        Caption = #1055#1088#1080#1093#1086#1076#1085#1099#1081' '#1086#1088#1076#1077#1088
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Segoe UI Light'
+        Font.Style = []
+        ParentFont = False
+        ExplicitWidth = 171
+      end
+      object bvl1: TBevel
+        AlignWithMargins = True
+        Left = 10
+        Top = 66
+        Width = 474
+        Height = 10
+        Margins.Left = 10
+        Margins.Top = 10
+        Margins.Right = 10
+        Align = alTop
+        Shape = bsTopLine
+        ExplicitLeft = 0
+        ExplicitTop = 50
+        ExplicitWidth = 552
+      end
+      object edtКлиент: TDBEditEh
+        AlignWithMargins = True
+        Left = 80
+        Top = 109
+        Width = 404
+        Height = 21
+        Margins.Left = 80
+        Margins.Right = 10
+        ControlLabel.Width = 40
+        ControlLabel.Height = 13
+        ControlLabel.Caption = #1050#1083#1080#1077#1085#1090':'
+        ControlLabel.Visible = True
+        ControlLabelLocation.Spacing = 8
+        ControlLabelLocation.Offset = -1
+        ControlLabelLocation.Position = lpLeftCenterEh
+        Align = alTop
+        DataField = #1050#1083#1080#1077#1085#1090
+        DataSource = dsФинансы
+        DynProps = <>
+        EditButtons = <>
+        ParentShowHint = False
+        ReadOnly = True
+        TabOrder = 0
+        Visible = True
+      end
+      object edtМенеджер: TDBEditEh
+        AlignWithMargins = True
+        Left = 80
+        Top = 82
+        Width = 404
+        Height = 21
+        Margins.Left = 80
+        Margins.Right = 10
+        ControlLabel.Width = 60
+        ControlLabel.Height = 13
+        ControlLabel.Caption = #1052#1077#1085#1077#1076#1078#1077#1088':'
+        ControlLabel.Visible = True
+        ControlLabelLocation.Spacing = 8
+        ControlLabelLocation.Offset = -1
+        ControlLabelLocation.Position = lpLeftCenterEh
+        Align = alTop
+        DataField = #1052#1077#1085#1077#1076#1078#1077#1088
+        DataSource = dsФинансы
+        DynProps = <>
+        EditButtons = <>
+        ParentShowHint = False
+        ReadOnly = True
+        TabOrder = 1
+        Visible = True
+      end
+    end
+  end
+  object pnlНижняя_Панель: TPanel
+    Left = 0
+    Top = 426
+    Width = 784
+    Height = 45
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = 15460070
+    Padding.Left = 7
+    Padding.Top = 7
+    Padding.Right = 7
+    Padding.Bottom = 7
+    ParentBackground = False
+    ShowCaption = False
+    TabOrder = 2
+    object lbl2: TLabel
+      AlignWithMargins = True
+      Left = 17
+      Top = 17
+      Width = 19
+      Height = 18
+      Margins.Left = 10
+      Margins.Top = 10
+      Align = alLeft
+      Caption = 'lbl2'
+      ExplicitHeight = 13
+    end
+    object btnОтмена: TButton
+      AlignWithMargins = True
+      Left = 699
+      Top = 10
+      Width = 75
+      Height = 25
+      Align = alRight
+      Caption = #1054#1090#1084#1077#1085#1072
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ModalResult = 2
+      ParentFont = False
+      TabOrder = 0
+    end
+    object btnСохранить: TButton
+      AlignWithMargins = True
+      Left = 618
+      Top = 10
+      Width = 75
+      Height = 25
+      Align = alRight
+      Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ModalResult = 1
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object FDQФинансы: TFDQuery
+    BeforeInsert = РежимРедактирования
+    AfterPost = РежимПросмотра
+    AfterCancel = РежимПросмотра
+    Connection = dmServer.Connection
+    SQL.Strings = (
+      'SELECT * FROM `'#1060#1080#1085#1072#1085#1089#1099'`')
+    Left = 216
+    Top = 160
+    object fdtncfldFDФинансыFID: TFDAutoIncField
+      FieldName = 'F-ID'
+      Origin = '`F-ID`'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object dtfldFDФинансыДата: TDateField
+      FieldName = #1044#1072#1090#1072
+      Origin = '`'#1044#1072#1090#1072'`'
+      Required = True
+    end
+    object intgrfldFDФинансыZID: TIntegerField
+      FieldName = 'Z-ID'
+      Origin = '`Z-ID`'
+      Required = True
+      Visible = False
+    end
+    object intgrfldFDФинансыMID: TIntegerField
+      FieldName = 'M-ID'
+      Origin = '`M-ID`'
+      Required = True
+      Visible = False
+    end
+    object intgrfldFDФинансыCID: TIntegerField
+      FieldName = 'C-ID'
+      Origin = '`C-ID`'
+      Required = True
+      Visible = False
+    end
+    object strngfldFDФинансыВидПлатежа: TStringField
+      FieldKind = fkLookup
+      FieldName = #1042#1080#1076' '#1055#1083#1072#1090#1077#1078#1072
+      LookupDataSet = dmServer.FDQСпособ_Оплаты
+      LookupKeyFields = 'ID'
+      LookupResultField = #1053#1072#1079#1074#1072#1085#1080#1077
+      KeyFields = #1057#1087#1086#1089#1086#1073'_'#1086#1087#1083#1072#1090#1099
+      Lookup = True
+    end
+    object intgrfldFDФинансыНомер_счёта: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = #1053#1086#1084#1077#1088'_'#1089#1095#1105#1090#1072
+      Origin = '`'#1053#1086#1084#1077#1088'_'#1089#1095#1105#1090#1072'`'
+    end
+    object intgrfldFDФинансыСумма: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = #1057#1091#1084#1084#1072
+      Origin = '`'#1057#1091#1084#1084#1072'`'
+      DisplayFormat = '#,##0 "'#8381'"'
+    end
+    object blnfldFDФинансыГашение: TBooleanField
+      AutoGenerateValue = arDefault
+      FieldName = #1043#1072#1096#1077#1085#1080#1077
+      Origin = '`'#1043#1072#1096#1077#1085#1080#1077'`'
+      Visible = False
+    end
+    object intgrfldFDФинансыСпособ_оплаты: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = #1057#1087#1086#1089#1086#1073'_'#1086#1087#1083#1072#1090#1099
+      Origin = '`'#1057#1087#1086#1089#1086#1073'_'#1086#1087#1083#1072#1090#1099'`'
+      Visible = False
+    end
+    object strngfldFDФинансыМенеджер: TStringField
+      DisplayWidth = 50
+      FieldKind = fkLookup
+      FieldName = #1052#1077#1085#1077#1076#1078#1077#1088
+      LookupDataSet = dmServer.FDQМенеджерФИО
+      LookupKeyFields = 'M-ID'
+      LookupResultField = #1060#1048#1054
+      KeyFields = 'M-ID'
+      Visible = False
+      Size = 50
+      Lookup = True
+    end
+    object strngfldFDФинансыКлиент: TStringField
+      DisplayWidth = 50
+      FieldKind = fkLookup
+      FieldName = #1050#1083#1080#1077#1085#1090
+      LookupDataSet = dmServer.FDQКлиентФИО
+      LookupKeyFields = 'C-ID'
+      LookupResultField = #1060#1048#1054
+      KeyFields = 'C-ID'
+      Visible = False
+      Size = 50
+      Lookup = True
+    end
+  end
+  object dsФинансы: TDataSource
+    DataSet = FDQФинансы
+    Left = 144
+    Top = 160
+  end
+  object FDQЗапросы: TFDQuery
+    Connection = dmServer.Connection
+    Left = 64
+    Top = 160
+  end
+end

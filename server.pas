@@ -57,6 +57,8 @@ type
     intgrfldFDQСоставСтоимость: TIntegerField;
     wdstrngfldFDQСоставПараметры: TWideStringField;
     strngfldFDQСоставНаименование: TStringField;
+    FDQСпособ_Оплаты: TFDQuery;
+    dsСпособ_Оплаты: TDataSource;
     procedure ИндикацияПодключения(Sender: TObject);
     procedure tmrPingTimer(Sender: TObject);
   private

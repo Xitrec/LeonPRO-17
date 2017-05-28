@@ -3,10 +3,9 @@ unit clientEdit;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask,
-  DBCtrlsEh, System.IOUtils;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.Mask, DBCtrlsEh, System.IOUtils;
 
 type
   TFClientEdit = class(TForm)
@@ -44,13 +43,14 @@ implementation
 
 {$R *.dfm}
 
-uses clients, server, setting;
+uses
+  clients, server, setting;
 
 { TFClientEdit }
 
 procedure TFClientEdit.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 const
-br = #10#13;
+  br = #10#13;
 begin
   if not FClients.FDКлиенты.Modified then
   begin
@@ -66,8 +66,7 @@ begin
   end;
 
   if Почта.Text = '' then
-    if MessageDlg('Почта клиента не задана. Некоторые функции программы будут не доступны.' + br + 'Продолжить?', mtConfirmation, mbOKCancel, 0) = mrOk
-    then
+    if MessageDlg('Почта клиента не задана. Некоторые функции программы будут не доступны.' + br + 'Продолжить?', mtConfirmation, mbOKCancel, 0) = mrOk then
       CanClose := true
     else
     begin
@@ -76,8 +75,7 @@ begin
     end;
 
   if Папка.Text = '' then
-    if MessageDlg('Папка клиента не задана. Некоторые функции программы будут не доступны.' + br + 'Продолжить?', mtConfirmation, mbOKCancel, 0) = mrOk
-    then
+    if MessageDlg('Папка клиента не задана. Некоторые функции программы будут не доступны.' + br + 'Продолжить?', mtConfirmation, mbOKCancel, 0) = mrOk then
       CanClose := true
     else
     begin
@@ -130,7 +128,7 @@ end;
 procedure TFClientEdit.ПапкаEditButtons0Click(Sender: TObject; var Handled: Boolean);
 var
   PathName: string;
-  I       : Integer;
+  I: Integer;
 begin
 
   PathName := '';
@@ -160,7 +158,7 @@ begin
     if Компания.Text > '' then
       PathName := PathName + '[' + Компания.Text + ']';
 
-    for I    := 1 to Length(PathName) do
+    for I := 1 to Length(PathName) do
       if not TPath.IsValidFileNameChar(PathName[I]) then
         PathName[I] := '_';
 
@@ -175,11 +173,16 @@ begin
     with FDЗапросы do
     begin
       Close;
-      SQL.Text                     := 'SELECT `Z-ID` FROM `Заказы` WHERE `C-ID` LIKE :CID';
+      SQL.Text := 'SELECT `Z-ID` FROM `Заказы` WHERE `C-ID` LIKE :CID';
       ParamByName('CID').AsInteger := FDКлиенты.FieldByName('C-ID').AsInteger;
       Open;
       if RecordCount = 0 then
-        FDКлиенты.Delete
+      begin
+        if Application.MessageBox('Удалить клиента из базы данных?', 'Подтверждение', MB_YESNO + MB_ICONQUESTION) = IDYES then
+        begin
+          FDКлиенты.Delete;
+        end;
+      end
       else
         ShowMessage('Удаление невозможно. К клиенту прикрепленно: ' + RecordCount.ToString + ' заказ(ов)');
     end;
@@ -202,3 +205,4 @@ begin
 end;
 
 end.
+

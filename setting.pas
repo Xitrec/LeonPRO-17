@@ -28,11 +28,25 @@ type
     edtPingInterval: TDBNumberEditEh;
     edtПапкаКлиентов: TDBEditEh;
     lbl2: TLabel;
+    Сообщения: TTabSheet;
+    grp1: TGroupBox;
+    grp2: TGroupBox;
+    grp3: TGroupBox;
+    edtТемаОформление: TDBEditEh;
+    edtТемаМакет: TDBEditEh;
+    edtТемаГотов: TDBEditEh;
+    memoОформление: TDBMemoEh;
+    memoМакет: TDBMemoEh;
+    memoГотов: TDBMemoEh;
+    lbl3: TLabel;
+    chkОткрыватьПапкуКлиента: TCheckBox;
+    Бланк: TTabSheet;
+    lbl4: TLabel;
+    memoБланкЗаказа: TDBMemoEh;
     procedure btnПодключитьБДClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure edtПапкаКлиентовEditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
+    procedure edtПапкаКлиентовEditButtons0Click(Sender: TObject; var Handled: Boolean);
   private
     FUserName: string;
     FPort: string;
@@ -44,6 +58,14 @@ type
     FSelectAID: Integer;
     FPingTime: Integer;
     FКаталогКлиентов: string;
+    FТемаОформление: string;
+    FТемаМакет: string;
+    FТемаГотов: string;
+    FТелоМакет: string;
+    FТелоОформление: string;
+    FТелоГотов: string;
+    FОткрыватьПапкуКлиента: Boolean;
+    FАдресБланкаЗаказа: string;
     procedure SetDatabase(const Value: string);
     procedure SetPassword(const Value: string);
     procedure SetPort(const Value: string);
@@ -54,9 +76,26 @@ type
     procedure SetSelectAID(const Value: Integer);
     procedure SetPingTime(const Value: Integer);
     procedure SetКаталогКлиентов(const Value: string);
+    procedure SetТемаОформление(const Value: string);
+    procedure SetТемаМакет(const Value: string);
+    procedure SetТемаГотов(const Value: string);
+    procedure SetТелоГотов(const Value: string);
+    procedure SetТелоМакет(const Value: string);
+    procedure SetТелоОформление(const Value: string);
+    procedure SetОткрыватьПапкуКлиента(const Value: Boolean);
     { Private declarations }
+    function ЗагрузитьФайл(ИмяФайла: string): string;
+    procedure СохранитьФайл(ИмяФайла: string; Value: string);
+    procedure SetАдресБланкаЗаказа(const Value: string);
   public
     { Public declarations }
+    property ОткрыватьПапкуКлиента: Boolean read FОткрыватьПапкуКлиента write SetОткрыватьПапкуКлиента;
+    property ТелоОформление: string read FТелоОформление write SetТелоОформление;
+    property ТелоМакет: string read FТелоМакет write SetТелоМакет;
+    property ТелоГотов: string read FТелоГотов write SetТелоГотов;
+    property ТемаГотов: string read FТемаГотов write SetТемаГотов;
+    property ТемаМакет: string read FТемаМакет write SetТемаМакет;
+    property ТемаОформление: string read FТемаОформление write SetТемаОформление;
     property КаталогКлиентов: string read FКаталогКлиентов write SetКаталогКлиентов;
     property Database: string read FDatabase write SetDatabase;
     property UserName: string read FUserName write SetUser_Name;
@@ -67,6 +106,7 @@ type
     property АвтоПодключение: Boolean read FАвтоПодключение write SetАвтоПодключение;
     property SelectAID: Integer read FSelectAID write SetSelectAID;
     property PingTime: Integer read FPingTime write SetPingTime;
+    property АдресБланкаЗаказа: string read FАдресБланкаЗаказа write SetАдресБланкаЗаказа;
     procedure Открыть();
     procedure ЗагрузитьНастройки();
     procedure СохранитьНастройки();
@@ -89,13 +129,12 @@ begin
   dmServer.Подключить;
 end;
 
-procedure TfSetting.edtПапкаКлиентовEditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
+procedure TfSetting.edtПапкаКлиентовEditButtons0Click(Sender: TObject; var Handled: Boolean);
 var
- chosenDirectory: string;
+  chosenDirectory: string;
 begin
-if SelectDirectory('Выберите каталог', '', chosenDirectory)  then
-  КаталогКлиентов :=  chosenDirectory;
+  if SelectDirectory('Выберите каталог', '', chosenDirectory) then
+    КаталогКлиентов := chosenDirectory;
 end;
 
 procedure TfSetting.FormCreate(Sender: TObject);
@@ -189,6 +228,15 @@ begin
   end;
 end;
 
+procedure TfSetting.SetАдресБланкаЗаказа(const Value: string);
+begin
+  if FАдресБланкаЗаказа <> Value then
+  begin
+    FАдресБланкаЗаказа := Value;
+    memoБланкЗаказа.Text := Value;
+  end;
+end;
+
 procedure TfSetting.SetИндикацияПодключения(const Value: Boolean);
 begin
   if FИндикацияПодключения <> Value then
@@ -211,12 +259,75 @@ begin
   end;
 end;
 
+procedure TfSetting.SetОткрыватьПапкуКлиента(const Value: Boolean);
+begin
+  if FОткрыватьПапкуКлиента <> Value then
+  begin
+    FОткрыватьПапкуКлиента := Value;
+    chkОткрыватьПапкуКлиента.Checked := Value;
+  end;
+end;
+
+procedure TfSetting.SetТелоГотов(const Value: string);
+begin
+  if FТелоГотов <> Value then
+  begin
+    FТелоГотов := Value;
+    memoГотов.Text := Value;
+  end;
+end;
+
+procedure TfSetting.SetТелоМакет(const Value: string);
+begin
+  if FТелоМакет <> Value then
+  begin
+    FТелоМакет := Value;
+    memoМакет.Text := Value;
+  end;
+end;
+
+procedure TfSetting.SetТелоОформление(const Value: string);
+begin
+  if FТелоОформление <> Value then
+  begin
+    FТелоОформление := Value;
+    memoОформление.Text := Value;
+  end;
+end;
+
+procedure TfSetting.SetТемаГотов(const Value: string);
+begin
+  if FТемаГотов <> Value then
+  begin
+    FТемаГотов := Value;
+    edtТемаГотов.Text := Value;
+  end;
+end;
+
+procedure TfSetting.SetТемаМакет(const Value: string);
+begin
+  if FТемаМакет <> Value then
+  begin
+    FТемаМакет := Value;
+    edtТемаМакет.text := Value;
+  end;
+end;
+
+procedure TfSetting.SetТемаОформление(const Value: string);
+begin
+  if FТемаОформление <> Value then
+  begin
+    FТемаОформление := Value;
+    edtТемаОформление.Text := Value;
+  end;
+end;
+
 procedure TfSetting.ЗагрузитьНастройки;
 var
   Ini: TIniFile;
 begin
   Ini := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'setting.ini');
-
+  //-----------------------------------------------
   Database := Ini.ReadString('Connection', 'Database', 'q36643w1_lp2');
   Password := Ini.ReadString('Connection', 'Password', 'trv35e');
   Port := Ini.ReadString('Connection', 'Port', '3306');
@@ -226,17 +337,48 @@ begin
   АвтоПодключение := Ini.ReadBool('Connection', 'АвтоПодключение', false);
 
   SelectAID := Ini.ReadInteger('Interface', 'SelectAID', 1);
-
+  //------------------------------------------------
   КаталогКлиентов := Ini.ReadString('Path', 'КаталогКлиентов', '');
+  //------------------------------------------------
+  ТемаОформление := Ini.ReadString('Mail', 'ТемаОформление', 'Заказ оформлен.');
+  ТемаМакет := Ini.ReadString('Mail', 'ТемаМакет', 'Макет на утверждение.');
+  ТемаГотов := Ini.ReadString('Mail', 'ТемаГотов', 'Ваш заказ готов.');
 
+  ТелоМакет := ЗагрузитьФайл('MailMaket.ini');
+  ТелоГотов := ЗагрузитьФайл('MailReady.ini');
+  ТелоОформление := ЗагрузитьФайл('MailOformlenie.ini');
+
+  ОткрыватьПапкуКлиента := Ini.ReadBool('Mail', 'ОткрыватьПапкуКлиента', true);
+  //------------------------------------------------
+  АдресБланкаЗаказа := ЗагрузитьФайл('ContactInfo.ini');
+  //------------------------------------------------
   Ini.Free;
 
+end;
+
+function TfSetting.ЗагрузитьФайл(ИмяФайла: string): string;
+var
+  ReadFileStrList: TStringList;
+begin
+  try
+    ReadFileStrList := TStringList.Create;
+    if FileExists(ExtractFilePath(ParamStr(0)) + ИмяФайла) then
+    begin
+      ReadFileStrList.LoadFromFile(ExtractFilePath(ParamStr(0)) + ИмяФайла);
+      Result := ReadFileStrList.Text;
+    end
+    else
+      ShowMessage('Файл настройки программы ' + ИмяФайла + ' - не найден.');
+  finally
+    ReadFileStrList.Free;
+  end;
 end;
 
 procedure TfSetting.Открыть;
 begin
   if ShowModal = mrOk then
   begin
+    // Вкладка СЕРВЕР
     Database := edtDB.Text;
     Password := edtPassword.Text;
     Port := edtProt.Text;
@@ -244,13 +386,49 @@ begin
     UserName := edtUser.Text;
     PingTime := edtPingInterval.Value;
     АвтоПодключение := chkАвтоПодключениеБД.Checked;
+
+    // Вкладка ПУТЬ К ПАПКАМ
     КаталогКлиентов := edtПапкаКлиентов.Text;
+
+    // Вкладка СООБЩЕНИЯ
+    ТемаОформление := edtТемаОформление.Text;
+    ТемаМакет := edtТемаМакет.Text;
+    ТемаГотов := edtТемаГотов.Text;
+    ТелоОформление := memoОформление.Text;
+    ТелоМакет := memoМакет.Text;
+    ТелоГотов := memoГотов.Text;
+    ОткрыватьПапкуКлиента := chkОткрыватьПапкуКлиента.Checked;
+
+    // Вкладка Бланк заказ
+    АдресБланкаЗаказа := memoБланкЗаказа.Text;
 
     СохранитьНастройки;
   end
   else
   begin
+    // Вкладка СЕРВЕР
+    edtDB.Text := Database;
+    edtPassword.Text := Password;
+    edtProt.Text := Port;
+    edtСервер.Text := Server;
+    edtUser.Text := UserName;
+    edtPingInterval.Value := PingTime;
+    chkАвтоПодключениеБД.Checked := АвтоПодключение;
 
+    // Вкладка ПУТЬ К ПАПКАМ
+    edtПапкаКлиентов.Text := КаталогКлиентов;
+
+    // Вкладка СООБЩЕНИЯ
+    edtТемаОформление.Text := ТемаОформление;
+    edtТемаМакет.Text := ТемаМакет;
+    edtТемаГотов.Text := ТемаГотов;
+    memoОформление.Text := ТелоОформление;
+    memoМакет.Text := ТелоМакет;
+    memoГотов.Text := ТелоГотов;
+    chkОткрыватьПапкуКлиента.Checked := ОткрыватьПапкуКлиента;
+
+    // Вкладка Бланк заказ
+    memoБланкЗаказа.Text := АдресБланкаЗаказа;
   end;
 end;
 
@@ -272,7 +450,33 @@ begin
 
   Ini.WriteString('Path', 'КаталогКлиентов', КаталогКлиентов);
 
+  Ini.WriteString('Mail', 'ТемаОформление', ТемаОформление);
+  Ini.WriteString('Mail', 'ТемаМакет', ТемаМакет);
+  Ini.WriteString('Mail', 'ТемаГотов', ТемаГотов);
+
+  СохранитьФайл('MailMaket.ini', ТелоМакет);
+  СохранитьФайл('MailReady.ini', ТелоГотов);
+  СохранитьФайл('MailOformlenie.ini', ТелоОформление);
+
+  Ini.WriteBool('Mail', 'ОткрыватьПапкуКлиента', ОткрыватьПапкуКлиента);
+
+
+  СохранитьФайл('ContactInfo.ini', АдресБланкаЗаказа);
+
   Ini.Free;
+end;
+
+procedure TfSetting.СохранитьФайл(ИмяФайла, Value: string);
+var
+  ReadFileStrList: TStringList;
+begin
+  try
+    ReadFileStrList := TStringList.Create;
+    ReadFileStrList.Text := Value;
+    ReadFileStrList.SaveToFile(ExtractFilePath(ParamStr(0)) + ИмяФайла);
+  finally
+    ReadFileStrList.Free;
+  end;
 end;
 
 end.

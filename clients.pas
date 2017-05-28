@@ -41,6 +41,7 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
+    edtCID: TDBEditEh;
     procedure ВыбратьКлиентаИзТаблицы(Sender: TObject);
     procedure РедактироватьКлиента(Sender: TObject);
     procedure СоздатьНовогоКлиента(Sender: TObject);
@@ -54,7 +55,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    function ВыбратьКлиента(CID: integer): integer;
+    procedure ВыбратьКлиента();
   end;
 
 var
@@ -119,7 +120,7 @@ begin
   end;
 end;
 
-function TFClients.ВыбратьКлиента(CID: integer): integer;
+procedure TFClients.ВыбратьКлиента();
 begin
   //Leon.Сообщение('Выбор клиент. Воходящий CID: ' + CID.ToString);
 
@@ -128,16 +129,16 @@ begin
     Close;
     SQL.Text := 'SELECT * FROM `Клиенты`';
     Open;
-    Locate('C-ID', CID, []);
+    Locate('C-ID', edtCID.Value, []);
   end;
 
   if ShowModal = mrOk then
   begin
-    Result := FDКлиенты.FieldByName('C-ID').AsInteger;
+    edtCID.Value := FDКлиенты.FieldByName('C-ID').AsInteger;
   end
   else
   begin
-    Result := CID;
+
   end;
 
  // Leon.Сообщение('Выходящий CID: ' + Result.ToString);

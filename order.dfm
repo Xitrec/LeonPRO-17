@@ -2,8 +2,8 @@
   Left = 0
   Top = 0
   Caption = #1047#1072#1082#1072#1079
-  ClientHeight = 554
-  ClientWidth = 934
+  ClientHeight = 580
+  ClientWidth = 957
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,12 +11,15 @@
   Font.Name = 'Segoe UI'
   Font.Style = []
   OldCreateOrder = False
+  Position = poOwnerFormCenter
+  OnCloseQuery = FormCloseQuery
+  OnShortCut = FormShortCut
   PixelsPerInch = 96
   TextHeight = 13
   object pnlНижняя_Панель: TPanel
     Left = 0
-    Top = 509
-    Width = 934
+    Top = 535
+    Width = 957
     Height = 45
     Align = alBottom
     BevelOuter = bvNone
@@ -30,7 +33,7 @@
     TabOrder = 0
     object btnОтмена: TButton
       AlignWithMargins = True
-      Left = 849
+      Left = 872
       Top = 10
       Width = 75
       Height = 25
@@ -47,7 +50,7 @@
     end
     object btnСохранить: TButton
       AlignWithMargins = True
-      Left = 768
+      Left = 791
       Top = 10
       Width = 75
       Height = 25
@@ -148,25 +151,72 @@
       TabOrder = 5
       Visible = True
     end
+    object edtWID: TDBEditEh
+      AlignWithMargins = True
+      Left = 461
+      Top = 12
+      Width = 41
+      Height = 21
+      Margins.Left = 35
+      Margins.Top = 5
+      Margins.Bottom = 5
+      ControlLabel.Width = 22
+      ControlLabel.Height = 13
+      ControlLabel.Caption = 'WID'
+      ControlLabel.Visible = True
+      ControlLabelLocation.Spacing = 8
+      ControlLabelLocation.Offset = -1
+      ControlLabelLocation.Position = lpLeftCenterEh
+      Align = alLeft
+      DataField = 'W-ID'
+      DataSource = ds_Состав
+      DynProps = <>
+      EditButtons = <>
+      TabOrder = 6
+      Visible = True
+    end
+    object edtVID: TDBEditEh
+      AlignWithMargins = True
+      Left = 382
+      Top = 12
+      Width = 41
+      Height = 21
+      Margins.Left = 35
+      Margins.Top = 5
+      Margins.Bottom = 5
+      ControlLabel.Width = 18
+      ControlLabel.Height = 13
+      ControlLabel.Caption = 'VID'
+      ControlLabel.Visible = True
+      ControlLabelLocation.Spacing = 8
+      ControlLabelLocation.Offset = -1
+      ControlLabelLocation.Position = lpLeftCenterEh
+      Align = alLeft
+      DataField = 'V-ID'
+      DataSource = ds_Состав
+      DynProps = <>
+      EditButtons = <>
+      TabOrder = 7
+      Visible = True
+    end
   end
   object pnlОсновная_Панель: TPanel
     Left = 0
     Top = 0
-    Width = 706
-    Height = 509
+    Width = 697
+    Height = 535
     Align = alClient
     BevelOuter = bvNone
     Caption = 'pnl'#1054#1089#1085#1086#1074#1085#1072#1103'_'#1055#1072#1085#1077#1083#1100
-    Color = 16185078
-    ParentBackground = False
+    ParentColor = True
     ShowCaption = False
     TabOrder = 1
     object DBGridEh3: TDBGridEh
       AlignWithMargins = True
       Left = 10
       Top = 177
-      Width = 686
-      Height = 322
+      Width = 677
+      Height = 348
       Margins.Left = 10
       Margins.Top = 0
       Margins.Right = 10
@@ -179,33 +229,34 @@
       PopupMenu = pmСоставPopup
       ReadOnly = True
       TabOrder = 0
+      OnDblClick = Изменить
       object RowDetailData: TRowDetailPanelControlEh
       end
     end
     object pnlВерхняя_Панель: TPanel
       Left = 0
       Top = 0
-      Width = 706
+      Width = 697
       Height = 177
       Align = alTop
       BevelOuter = bvNone
       Caption = 'Panel4'
-      Color = 16185078
       DoubleBuffered = True
-      ParentBackground = False
+      ParentColor = True
       ParentDoubleBuffered = False
       ShowCaption = False
       TabOrder = 1
       object pnlДоп_Панель: TPanel
         Left = 0
         Top = 80
-        Width = 706
+        Width = 697
         Height = 97
         Align = alBottom
         BevelOuter = bvNone
         Caption = 'pnl'#1044#1086#1087'_'#1055#1072#1085#1077#1083#1100
         Padding.Left = 10
         Padding.Right = 10
+        ParentColor = True
         ShowCaption = False
         TabOrder = 0
         object pnlДаты_Панель: TPanel
@@ -217,12 +268,13 @@
           AutoSize = True
           BevelOuter = bvNone
           Caption = 'pnl'#1044#1072#1090#1099'_'#1055#1072#1085#1077#1083#1100
+          ParentColor = True
           ShowCaption = False
           TabOrder = 0
           object edtДатаСоздания: TDBDateTimeEditEh
             AlignWithMargins = True
             Left = 160
-            Top = 67
+            Top = 5
             Width = 124
             Height = 21
             Margins.Left = 160
@@ -248,7 +300,7 @@
           object edtДатаМакета: TDBDateTimeEditEh
             AlignWithMargins = True
             Left = 160
-            Top = 5
+            Top = 36
             Width = 124
             Height = 21
             Margins.Left = 160
@@ -274,7 +326,7 @@
           object edtДатаИзготовления: TDBDateTimeEditEh
             AlignWithMargins = True
             Left = 160
-            Top = 36
+            Top = 67
             Width = 124
             Height = 21
             Margins.Left = 160
@@ -301,19 +353,20 @@
         object pnlНазвание_Панель: TPanel
           Left = 299
           Top = 0
-          Width = 397
+          Width = 388
           Height = 97
           Align = alClient
           AutoSize = True
           BevelOuter = bvNone
           Caption = 'pnl'#1053#1072#1079#1074#1072#1085#1080#1077'_'#1055#1072#1085#1077#1083#1100
+          ParentColor = True
           ShowCaption = False
           TabOrder = 1
           object edtНазвание: TDBEditEh
             AlignWithMargins = True
             Left = 80
             Top = 5
-            Width = 317
+            Width = 308
             Height = 21
             Margins.Left = 80
             Margins.Top = 5
@@ -339,7 +392,7 @@
             AlignWithMargins = True
             Left = 80
             Top = 36
-            Width = 317
+            Width = 308
             Height = 21
             Margins.Left = 80
             Margins.Top = 5
@@ -356,21 +409,18 @@
             DataField = #1050#1083#1080#1077#1085#1090
             DataSource = ds_Заказ
             DynProps = <>
-            EditButtons = <
-              item
-                Style = ebsEllipsisEh
-                OnClick = edtКлиентEditButtons0Click
-              end>
+            EditButtons = <>
             ParentShowHint = False
             ReadOnly = True
             TabOrder = 1
             Visible = True
+            OnClick = edtКлиентClick
           end
           object edtМенеджер: TDBEditEh
             AlignWithMargins = True
             Left = 80
             Top = 67
-            Width = 317
+            Width = 308
             Height = 21
             Margins.Left = 80
             Margins.Top = 5
@@ -402,7 +452,7 @@
       object pnl1: TPanel
         Left = 0
         Top = 0
-        Width = 706
+        Width = 697
         Height = 80
         Align = alClient
         BevelOuter = bvNone
@@ -413,7 +463,7 @@
           AlignWithMargins = True
           Left = 10
           Top = 67
-          Width = 686
+          Width = 677
           Height = 10
           Margins.Left = 10
           Margins.Top = 0
@@ -432,6 +482,7 @@
           Align = alLeft
           BevelOuter = bvNone
           Caption = 'pnl2'
+          ParentColor = True
           ShowCaption = False
           TabOrder = 0
           object lblL_НарядЗаказ: TLabel
@@ -472,13 +523,7 @@
             DataSource = ds_Заказ
             DynProps = <>
             EditButtons = <>
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clActiveCaption
-            Font.Height = -13
-            Font.Name = 'Segoe UI Semilight'
-            Font.Style = []
             ParentColor = True
-            ParentFont = False
             ReadOnly = True
             TabOrder = 0
             Visible = True
@@ -487,16 +532,17 @@
         object pnl3: TPanel
           Left = 299
           Top = 0
-          Width = 407
+          Width = 398
           Height = 67
           Align = alClient
           BevelOuter = bvNone
           Caption = 'pnl3'
+          ParentColor = True
           ShowCaption = False
           TabOrder = 1
           object edtНомер: TDBEditEh
             AlignWithMargins = True
-            Left = 160
+            Left = 151
             Top = 33
             Width = 83
             Height = 21
@@ -521,7 +567,7 @@
           end
           object edtZID: TDBEditEh
             AlignWithMargins = True
-            Left = 296
+            Left = 287
             Top = 33
             Width = 101
             Height = 21
@@ -551,10 +597,10 @@
   end
   object pnlБоковая_Панель: TPanel
     AlignWithMargins = True
-    Left = 706
+    Left = 697
     Top = 10
-    Width = 218
-    Height = 489
+    Width = 250
+    Height = 515
     Margins.Left = 0
     Margins.Top = 10
     Margins.Right = 10
@@ -563,7 +609,7 @@
     BevelKind = bkFlat
     BevelOuter = bvNone
     Caption = 'pnl'#1041#1086#1082#1086#1074#1072#1103'_'#1055#1072#1085#1077#1083#1100
-    Color = 15921906
+    Color = 16185078
     ParentBackground = False
     ShowCaption = False
     TabOrder = 2
@@ -571,24 +617,23 @@
       AlignWithMargins = True
       Left = 3
       Top = 10
-      Width = 208
+      Width = 240
       Height = 13
       Margins.Top = 10
       Align = alTop
       Alignment = taCenter
-      Caption = #1048#1085#1092#1086#1088#1084#1072#1094#1080#1103
-      ExplicitWidth = 72
+      Caption = #1048#1085#1092#1086#1088#1084#1072#1094#1080#1103' '#1086' '#1079#1072#1082#1072#1079#1077
+      ExplicitWidth = 119
     end
     object cbbAID: TDBLookupComboboxEh
       AlignWithMargins = True
-      Left = 80
-      Top = 361
-      Width = 124
+      Left = 120
+      Top = 251
+      Width = 106
       Height = 21
-      Margins.Left = 80
-      Margins.Top = 0
-      Margins.Right = 10
-      Margins.Bottom = 10
+      Margins.Left = 120
+      Margins.Top = 20
+      Margins.Right = 20
       ControlLabel.Width = 36
       ControlLabel.Height = 13
       ControlLabel.Caption = #1057#1090#1072#1090#1091#1089':'
@@ -596,7 +641,7 @@
       ControlLabelLocation.Spacing = 8
       ControlLabelLocation.Offset = -1
       ControlLabelLocation.Position = lpLeftCenterEh
-      Align = alBottom
+      Align = alTop
       DynProps = <>
       DataField = 'A-ID'
       DataSource = ds_Заказ
@@ -609,14 +654,13 @@
     end
     object edtСтоимость: TDBNumberEditEh
       AlignWithMargins = True
-      Left = 80
-      Top = 392
-      Width = 124
+      Left = 120
+      Top = 285
+      Width = 106
       Height = 21
-      Margins.Left = 80
-      Margins.Top = 0
-      Margins.Right = 10
-      Margins.Bottom = 10
+      Margins.Left = 120
+      Margins.Top = 10
+      Margins.Right = 20
       ControlLabel.Width = 60
       ControlLabel.Height = 13
       ControlLabel.Caption = #1057#1090#1086#1080#1084#1086#1089#1090#1100':'
@@ -624,8 +668,8 @@
       ControlLabelLocation.Spacing = 8
       ControlLabelLocation.Offset = -1
       ControlLabelLocation.Position = lpLeftCenterEh
-      Align = alBottom
-      currency = True
+      Align = alTop
+      currency = False
       DataField = #1057#1090#1086#1080#1084#1086#1089#1090#1100
       DataSource = ds_Заказ
       DynProps = <>
@@ -636,14 +680,12 @@
     end
     object edtДоплата: TDBNumberEditEh
       AlignWithMargins = True
-      Left = 80
-      Top = 454
-      Width = 124
+      Left = 120
+      Top = 339
+      Width = 106
       Height = 21
-      Margins.Left = 80
-      Margins.Top = 0
-      Margins.Right = 10
-      Margins.Bottom = 10
+      Margins.Left = 120
+      Margins.Right = 20
       ControlLabel.Width = 48
       ControlLabel.Height = 13
       ControlLabel.Caption = #1044#1086#1087#1083#1072#1090#1072':'
@@ -651,8 +693,8 @@
       ControlLabelLocation.Spacing = 8
       ControlLabelLocation.Offset = -1
       ControlLabelLocation.Position = lpLeftCenterEh
-      Align = alBottom
-      currency = True
+      Align = alTop
+      currency = False
       DataField = #1044#1086#1087#1083#1072#1090#1072
       DataSource = ds_Заказ
       DynProps = <>
@@ -663,14 +705,12 @@
     end
     object edtАванс: TDBNumberEditEh
       AlignWithMargins = True
-      Left = 80
-      Top = 423
-      Width = 124
+      Left = 120
+      Top = 312
+      Width = 106
       Height = 21
-      Margins.Left = 80
-      Margins.Top = 0
-      Margins.Right = 10
-      Margins.Bottom = 10
+      Margins.Left = 120
+      Margins.Right = 20
       ControlLabel.Width = 34
       ControlLabel.Height = 13
       ControlLabel.Caption = #1040#1074#1072#1085#1089':'
@@ -678,8 +718,9 @@
       ControlLabelLocation.Spacing = 8
       ControlLabelLocation.Offset = -1
       ControlLabelLocation.Position = lpLeftCenterEh
-      Align = alBottom
-      currency = True
+      Align = alTop
+      Color = 16121844
+      currency = False
       DataField = #1040#1074#1072#1085#1089
       DataSource = ds_Заказ
       DynProps = <>
@@ -687,13 +728,14 @@
       ReadOnly = True
       TabOrder = 3
       Visible = True
+      OnClick = ВнестиАванс
     end
     object dbmh1: TDBMemoEh
       AlignWithMargins = True
       Left = 10
       Top = 36
-      Width = 194
-      Height = 245
+      Width = 226
+      Height = 195
       Margins.Left = 10
       Margins.Top = 10
       Margins.Right = 10
@@ -717,21 +759,26 @@
       object PopupПолимер: TMenuItem
         Tag = 1
         Caption = #1055#1077#1095#1072#1090#1080' '#1080' '#1064#1090#1072#1084#1087#1099
+        OnClick = Добавить
       end
       object PopupПолиграфия: TMenuItem
         Tag = 2
         Caption = #1055#1086#1083#1080#1075#1088#1072#1092#1080#1103
+        OnClick = Добавить
       end
       object PopupТаблички: TMenuItem
         Tag = 3
         Caption = #1058#1072#1073#1083#1080#1095#1082#1080
+        OnClick = Добавить
       end
     end
     object PopupИзменить: TMenuItem
       Caption = #1048#1079#1084#1077#1085#1080#1090#1100
+      OnClick = Изменить
     end
     object PupupУдалить: TMenuItem
       Caption = #1059#1076#1072#1083#1080#1090#1100
+      OnClick = Удалить
     end
   end
   object FDQЗаказ: TFDQuery
@@ -798,16 +845,19 @@
       AutoGenerateValue = arDefault
       FieldName = #1057#1090#1086#1080#1084#1086#1089#1090#1100
       Origin = '`'#1057#1090#1086#1080#1084#1086#1089#1090#1100'`'
+      DisplayFormat = '#,##0 "'#8381'"'
     end
     object intgrfldFDЗаказАванс: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = #1040#1074#1072#1085#1089
       Origin = '`'#1040#1074#1072#1085#1089'`'
+      DisplayFormat = '#,##0 "'#8381'"'
     end
     object intgrfldFDЗаказДоплата: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = #1044#1086#1087#1083#1072#1090#1072
       Origin = '`'#1044#1086#1087#1083#1072#1090#1072'`'
+      DisplayFormat = '#,##0 "'#8381'"'
     end
     object dtmfldFDЗаказUpdate: TDateTimeField
       AutoGenerateValue = arDefault

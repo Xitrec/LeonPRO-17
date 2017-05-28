@@ -72,6 +72,7 @@
       FieldName = 'Z-ID'
       Origin = '`Z-ID`'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
       Visible = False
     end
     object intgrfldFDQЗаказыCID: TIntegerField
@@ -168,6 +169,7 @@
     end
     object wdstrngfldFDQСоставПараметры: TWideStringField
       AutoGenerateValue = arDefault
+      DisplayWidth = 80
       FieldName = #1055#1072#1088#1072#1084#1077#1090#1088#1099
       Origin = '`'#1055#1072#1088#1072#1084#1077#1090#1088#1099'`'
       FixedChar = True
@@ -177,6 +179,7 @@
       FieldName = 'S-ID'
       Origin = '`S-ID`'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
       Visible = False
     end
     object intgrfldFDQСоставZID: TIntegerField
@@ -308,5 +311,17 @@
       'SELECT * FROM `'#1056#1072#1073#1086#1090#1099'`')
     Left = 472
     Top = 392
+  end
+  object FDQСпособ_Оплаты: TFDQuery
+    Connection = Connection
+    SQL.Strings = (
+      'SELECT * FROM `'#1057#1087#1086#1089#1086#1073'_'#1054#1087#1083#1072#1090#1099'`')
+    Left = 472
+    Top = 472
+  end
+  object dsСпособ_Оплаты: TDataSource
+    DataSet = FDQСпособ_Оплаты
+    Left = 592
+    Top = 472
   end
 end
